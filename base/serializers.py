@@ -1,20 +1,18 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
-from .models import Advocate, Links
+from .models import Advocate, Company
 
-class LinkSerializer(ModelSerializer):
+class CompanySerializer(ModelSerializer):
     class Meta:
-        model = Links
         fields = [
-            'name', 'url'
+            'id',
+            'name',
+            'logo',
+            'summary',
         ]
+        model = Company
 
 class AdvocateSerializer(ModelSerializer):
-    links = SerializerMethodField('get_links')
-
-    def get_links(self, object):
-        query = object.links_set.all()
-        links = LinkSerializer(query, many=True).data
-        return links
+    company = CompanySerializer()
 
     class Meta:
         model = Advocate
