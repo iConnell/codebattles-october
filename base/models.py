@@ -15,8 +15,8 @@ class Company(models.Model):
 class Advocate(models.Model):
     name = models.CharField(max_length=256)
     profile_pic = models.ImageField()
-    short_bio = models.CharField(max_length=256, null=True, blank=True)
-    long_bio = models.CharField(max_length=1024, null=True, blank=True)
+    short_bio = models.CharField(max_length=256, default='')
+    long_bio = models.CharField(max_length=1024, default='')
     advocate_years_exp = models.IntegerField()
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
