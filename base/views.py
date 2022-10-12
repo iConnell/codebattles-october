@@ -8,5 +8,5 @@ class CompanyViewSet(ModelViewSet):
     serializer_class = CompanySerializer
 
 class AdvocateViewSets(ModelViewSet):
-    serializer_class = AdvocateSerializer
     queryset = Advocate.objects.all()
+    serializer_class = AdvocateSerializer

@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'storages',
-    
+    'drf_yasg',
+
     'base',   
 ]
 
@@ -134,6 +135,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SWAGGER_SETTINGS = {
+   'USE_SESSION_AUTH': False
+}
 
 CORS_ORIGIN_ALLOW_ALL = True
 

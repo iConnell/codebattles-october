@@ -24,7 +24,7 @@ class BaseCompanySerializer(ModelSerializer):
 class CompanySerializer(ModelSerializer):
     advocates = SerializerMethodField('get_advocates')
 
-    def get_advocates(self, instance):
+    def get_advocates(self, instance) -> list:
         query = instance.advocate_set.all()
         advocates = BaseAdvocateSerializer(query, many=True).data
         return advocates

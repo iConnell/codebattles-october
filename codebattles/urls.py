@@ -15,8 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Developer Advocates API",
+      default_version='v1',
+      description="API that outputs a list of developer advocates with their details such as where they work, social links, bio, etc.",
+   ),
+)
 
 urlpatterns = [
+    path('', schema_view.with_ui('swagger')),
     path('admin/', admin.site.urls),
-    path('', include('base.urls'))
+    path('', include('base.urls')),
 ]
