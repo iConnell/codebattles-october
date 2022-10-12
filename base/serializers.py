@@ -12,6 +12,15 @@ class BaseAdvocateSerializer(ModelSerializer):
             'short_bio'
         ]
 
+class BaseCompanySerializer(ModelSerializer):
+    class Meta:
+        fields = [
+            'id',
+            'name',
+            'logo',
+        ]
+        model = Company
+
 class CompanySerializer(ModelSerializer):
     advocates = SerializerMethodField('get_advocates')
 
@@ -32,11 +41,10 @@ class CompanySerializer(ModelSerializer):
 
 
 class AdvocateSerializer(ModelSerializer):
-    company = CompanySerializer()
+    company = BaseCompanySerializer()
 
     def to_representation(self, instance):
         data =  super().to_representation(instance)
-        del data['company']['summary']
         data['company']['href'] = reverse('company-detail', kwargs={'pk': data['company']['id']})
         data['links'] = {
             "youtube": instance.youtube,
