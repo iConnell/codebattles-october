@@ -10,7 +10,6 @@ class CompanyViewSet(ModelViewSet):
 
 class AdvocateViewSets(ModelViewSet):
     serializer_class = AdvocateSerializer
-    pagination_class = CustomPagination
 
     def get_queryset(self):
         queryset = Advocate.objects.all()
