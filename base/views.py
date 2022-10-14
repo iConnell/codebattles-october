@@ -1,15 +1,17 @@
 from rest_framework.viewsets import ModelViewSet
 from .serializers import AdvocateSerializer, CompanySerializer
 from .models import Advocate, Company
-from .pagination import CustomPagination
+from .pagination import AdvocatePagination, CompanyPagination
 # Create your views here.
 
 class CompanyViewSet(ModelViewSet):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
+    pagination_class = CompanyPagination
 
 class AdvocateViewSets(ModelViewSet):
     serializer_class = AdvocateSerializer
+    pagination_class = AdvocatePagination
 
     def get_queryset(self):
         queryset = Advocate.objects.all()
