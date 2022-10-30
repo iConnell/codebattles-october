@@ -31,7 +31,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['iconnell.pythonanywhere.com', 'iconnell-dev-advocates.up.railway.app', 'localhost', 'https://dev-advocates.onrender.com']
+ALLOWED_HOSTS = ['iconnell.pythonanywhere.com', 'iconnell-dev-advocates.up.railway.app', 'localhost', 'dev-advocates.onrender.com']
 
 
 # Application definition
