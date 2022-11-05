@@ -1,9 +1,11 @@
-from django.urls import path
-from .views import CompanyViewSet, AdvocateViewSets
+from django.urls import path, include
+from .views import CompanyViewSet, AdvocateViewSets, base_url
+
 
 urlpatterns = [
-    # path('companies/', CompanyViewSet.as_view({'get':'list', 'post':'create'}), name='company-list'),
+    path('', base_url, name="root"),
     # path('companies/<int:pk>/', CompanyViewSet.as_view({'get':'retrieve'}), name='company-detail'),
-    path('advocates/', AdvocateViewSets.as_view({'get':'list'}), name="advocates-list"),
-    path('advocates/<str:username>/', AdvocateViewSets.as_view({'get': 'retrieve'}))
+    # path('companies/', CompanyViewSet.as_view({'get':'list', 'post':'create'}), name='company-list'),
+    path('advocates/', AdvocateViewSets.as_view({'get':'list', 'post':'create'}), name="advocates-list"),
+    path('advocates/<str:username>/', AdvocateViewSets.as_view({'get': 'retrieve'}), name="advocates-detail")
 ]
