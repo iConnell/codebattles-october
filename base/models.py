@@ -7,6 +7,9 @@ class Company(models.Model):
     logo = models.ImageField()
     summary = models.CharField(max_length=256, blank=True, null=True)
 
+    class Meta:
+        ordering = ['-id']
+        
     def __str__(self):
         return self.name
 
@@ -17,6 +20,9 @@ class Advocate(models.Model):
     profile_pic = models.ImageField()
     bio = models.CharField(max_length=256, default='')
     twitter = models.CharField(max_length=256, null=True, blank=True)
+
+    class Meta:
+        ordering = ['-id']
 
     def __str__(self):
         return self.name
