@@ -12,6 +12,7 @@ class CompanyViewSet(ModelViewSet):
 class AdvocateViewSets(ModelViewSet):
     serializer_class = AdvocateSerializer
     pagination_class = AdvocatePagination
+    lookup_field = 'username'
 
     def get_queryset(self):
         queryset = Advocate.objects.all()
